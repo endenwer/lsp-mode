@@ -45,6 +45,10 @@
                        "--stdio")))
   :activation-fn (lambda (file-name _mode)
                    (string= (f-ext file-name) "svelte"))
+  :initialization-options (lambda ()
+                            `(("config" . "")
+                              ("dontFilterIncompleteCompletions" . t)
+                              ("prettierConfig" . "")))
   :server-id 'svelte-ls
   :download-server-fn (lambda (_client callback error-callback _update?)
                         (lsp-package-ensure 'svelte-language-server callback error-callback))))
